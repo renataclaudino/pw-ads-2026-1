@@ -19,7 +19,7 @@ else msg = 'Acesso negado. '
 console.log(user, msg)
 
 //tomando a mesma decisãop, mas usando o operador ternário
-msg = user === 'admin' : 'bem vindo': 'acesso negado.'
+msg = user === 'admin' , 'bem vindo', 'acesso negado.'
 console.log(user, msg)
 
 
