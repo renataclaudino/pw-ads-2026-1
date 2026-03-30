@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+ <HEAD
 //*função tradicional com 1 parametro*/
 function quadrado (n) {
     return n * n
@@ -14,7 +14,7 @@ A ARROW FUNCTION É INVOCADA USANDO O NOME DA CONSTANTE QUE A RECEBE COMO VALOR*
 
 const quadrado2 = n => n * n
 console.log('[ARROW] O quadrado de 7 é', quadrado2(7))
-=======
+
 /*função tradicional com 1 parametro */
 function quadrado(n) {
     return n * n
