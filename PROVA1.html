@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Prova 1</title>
+    <style>
+        .cor-titulo { color: #2c3e50; }
+        .cor-preco { color: #e67e22; }
+        .cor-estoque { color: #27ae60; }
+        
+    </style>
+</head>
+<body>
+
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        // Item 4: Arrow function com props: produto, preco e estoque
+        const ProdutoComponent = ({ produto, preco, estoque }) => (
+            // Retorno de um fragment (<>) conforme solicitado
+            <div className="card">
+                {/* Item 4.a: h1 com a primeira classe e prop produto */}
+                <h1 className="cor-titulo">{produto}</h1>
+                
+                {/* Item 4.b: p com a segunda classe, "R$" e preco.toFixed(2) */}
+                <p className="cor-preco">R$ {preco.toFixed(2)}</p>
+                
+                {/* Item 4.c: p com a terceira classe e "Estoque: " + prop estoque */}
+                <p className="cor-estoque">Quantidade em Estoque: {estoque}</p>
+            </div>
+        );
+
+        // Item 6: Container usando fragment com três componentes de valores diferentes
+        const Container = (
+            <>
+                <ProdutoComponent produto="Teclado Mecânico" preco={250.00} estoque={15} />
+                <ProdutoComponent produto="Mouse Gamer" preco={120.50} estoque={30} />
+                <ProdutoComponent produto="Monitor 144hz" preco={1100.99} estoque={5} />
+            </>
+        );
+
+        // Item 7: Código para renderizar o container no elemento root
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(Container);
+
+        /* Item 8: Explicação passo a passo da lógica:
+           - Passo 1: Definimos classes CSS para garantir que cada informação (nome, preço, estoque) tenha uma cor distinta.
+           - Passo 2: Criamos o componente 'ProdutoComponent' usando Arrow Function. Ele é um molde que recebe dados (props) e os encaixa no HTML.
+           - Passo 3: Usamos o método .toFixed(2) no preço para garantir que ele sempre exiba duas casas decimais, como um valor monetário real.
+           - Passo 4: Agrupamos três chamadas desse componente dentro de um Fragment. Cada chamada envia dados diferentes para as props, demonstrando a reutilização do componente.
+           - Passo 5: Utilizamos a biblioteca ReactDOM para "injetar" todo esse código dinâmico dentro da div 'root' do nosso HTML estático.
+        */
+    </script>
+</body>
+</html>
