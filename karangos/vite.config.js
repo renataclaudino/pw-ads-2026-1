@@ -1,11 +1,24 @@
-import { defineConfig } from 'vite'
-import react, { reactCompilerPreset } from '@vitejs/plugin-react'
-import babel from '@rolldown/plugin-babel'
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-// https://vite.dev/config/
-export default defineConfig({
-  plugins: [
-    react(),
-    babel({ presets: [reactCompilerPreset()] })
-  ],
-})
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
