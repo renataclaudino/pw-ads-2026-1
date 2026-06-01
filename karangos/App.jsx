@@ -1,31 +1,46 @@
-import React from 'react'
+// import './App.css'
+import { BrowserRouter } from 'react-router-dom'
+import HeaderBar from './ui/HeaderBar'
+import CssBaseline from '@mui/material/CssBaseline'
+import { ThemeProvider } from '@mui/material/styles'
+import theme from './ui/theme'
+import FooterBar from './ui/FooterBar'
+import AppRoutes from './routes/AppRoutes'
 import Box from '@mui/material/Box'
-import Typography from '@mui/material/Typography'
-import CoffeeIcon from '@mui/icons-material/Coffee';
+import { Suspense } from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
 
-export default function FooterBar() {
-  return <>
-    <Box
-      component="footer"
-      sx={{
-        backgroundColor: 'action.disabledBackground',
-        display: 'flex',
-        justifyContent: 'center',
-        position: 'fixed',  // posição fixa
-        bottom: 0,          // na parte de baixo da página
-        width: '100vw'
-      }}
-    >
-      <Typography 
-        variant="caption"
-        sx={{
-         '& a': {  // Altera a cor do link (a) dentro do Typography (&)
-           color: 'secondary.light'
-         }
-       }}
-      >
-        Desenvolvido e mantido com <CoffeeIcon sx={{ verticalAlign: 'text-bottom', fontSize: 'inherit' }} /> por <a href="mailto:professor@faustocintra.com.br">Prof. Fausto Cintra</a>
-      </Typography>
+function ErrorFallback({ error, resetErrorBoundary }) {
+  return (
+    <Box sx={{ m: '48px 24px' }}>
+      <p>Erro ao carregar os dados: {error.message}</p>
+      <button onClick={resetErrorBoundary}>Tentar novamente</button>
     </Box>
-  </>
+  )
 }
+
+function App() {
+  return (
+    <>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <BrowserRouter>
+          <HeaderBar />
+
+          {/* Dentro da prop "sx", "m" significa "margin" */}
+          <Box id="innerRoot" sx={{ m: '48px 24px' }}>
+          <ErrorBoundary FallbackComponent={ErrorFallback}>
+            <Suspense fallback={<p>Carregando...</p>}>
+              <AppRoutes />
+            </Suspense>
+          </ErrorBoundary>
+        </Box>
+
+          <FooterBar />
+        </BrowserRouter>
+      </ThemeProvider>
+    </>
+  )
+}
+
+export default App

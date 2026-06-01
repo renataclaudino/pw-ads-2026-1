@@ -1,75 +1,15 @@
-import * as React from 'react';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import { Link } from 'react-router-dom'
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 
-export default function MainMenu() {
-  const id = React.useId();
-  const buttonId = `${id}-button`;
-  const menuId = `${id}-menu`;
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+// import './index.css'
+import App from './App.jsx'
 
-  return (
-    <div>
-      <IconButton
-        id="basic-button"
-        aria-controls={open ? 'basic-menu' : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
-        onClick={handleClick}
-        edge="start"
-        color="inherit"
-        aria-label="menu" sx={{ mr: 2 }}
-      >
-        <MenuIcon />
-      </IconButton>
-      <Menu
-        id={menuId}
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        slotProps={{
-          list: {
-            'aria-labelledby': buttonId,
-          },
-        }}
-      >
-        <MenuItem
-          onClick={handleClose}
-          component={Link}
-          to="/"
-          divider
-        >
-          Página inicial
-        </MenuItem>
-
-        <MenuItem
-          onClick={handleClose}
-          component={Link}
-          to="/cars"
-        >
-          Listagem de veículos
-        </MenuItem>
-
-
-        <MenuItem
-          onClick={handleClose}
-          component={Link}
-          to="/customers"
-        >
-          Listagem de clientes
-        </MenuItem>
-
-      </Menu>
-    </div>
-  );
-}
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+)
