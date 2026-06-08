@@ -60,13 +60,20 @@ export default function MainMenu() {
           Listagem de veículos
         </MenuItem>
 
-
         <MenuItem
           onClick={handleClose}
           component={Link}
           to="/customers"
         >
           Listagem de clientes
+        </MenuItem>
+
+        <MenuItem
+          onClick={handleClose}
+          component={Link}
+          to="/sobre-a-autora"
+        >
+          Sobre a autora
         </MenuItem>
 
       </Menu>
